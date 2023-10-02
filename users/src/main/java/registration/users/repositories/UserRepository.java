@@ -1,5 +1,5 @@
 package registration.users.repositories;
 
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long>{
     
 }
