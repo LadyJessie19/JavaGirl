@@ -1,9 +1,14 @@
 package com.hotelium.limbo.model;
 
-import com.hotelium.limbo.generic.GenericEntity;
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends GenericEntity {
+public class User {
 
     @Setter
     @Column
@@ -28,4 +33,22 @@ public class User extends GenericEntity {
     @Setter
     @Column
     private String password;
+
+    @GeneratedValue
+    @Id
+    private Long id;
+
+    @Column
+    @CreationTimestamp
+    private Date createdAt;
+
+    @Column
+    @UpdateTimestamp
+    private Date updatedAt;
+
+    @Column(name = "createdBy")
+    private String createdBy = "Jessie";
+
+    @Column(name = "updatedBy")
+    private String updatedBy = "Jessie";
 }
